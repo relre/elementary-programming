@@ -1,2 +1,2 @@
-rune to ascii > `int(rune(char))`
-ascii to rune > `rune(33)`
+- rune to ascii > `int(rune(char))`
+- ascii to rune > `rune(33)`
