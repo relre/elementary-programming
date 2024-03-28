@@ -18,6 +18,7 @@ func main() {
 	ReduceInt(as, div)
 }
 
+// KOD BAŞLANGICI
 func ReduceInt(a []int, f func(int, int) int) {
 	// acc := f(a[0], a[1])
 	acc := a[0]
