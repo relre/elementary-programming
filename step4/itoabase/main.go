@@ -1,26 +1,41 @@
-## itoabase
+package piscine
 
-### Instructions
-
-Write a function that:
-
-- converts an `int` value to a `string` using the specified base in the argument
-- and that returns this `string`
-
-The base is expressed as an `int`, from 2 to 16. The characters comprising
-the base are the digits from 0 to 9, followed by uppercase letters from A to F.
-
-For example, the base `4` would be the equivalent of "0123" and the base `16` would be the equivalent of "0123456789ABCDEF".
-
-If the value is negative, the resulting `string` has to be preceded by a
-minus sign `-`.
-
-Only valid inputs will be tested.
-
-### Expected function
-
-```go
 func ItoaBase(value, base int) string {
+	origin := "0123456789ABCDEF"
+	str := origin
+	str = str[:base]
+	runes := []rune(str)
+	valid := true
+	result := ""
+	if base < 2 {
+		valid = false
+	}
+	if !valid {
+		return "NV"
+	}
 
+	if value == 0 {
+		return "0"
+	} else {
+		if value < 0 {
+			result = result + "-"
+		}
+		result += BaseRecursion(value, runes, base)
+	}
+	return result
 }
-```
+
+func BaseRecursion(nbr int, runes []rune, base int) string {
+	result := ""
+	if nbr/base != 0 {
+		result = BaseRecursion(nbr/base, runes, base)
+	}
+	mod := 0
+	mod = nbr % base
+	if mod < 0 {
+		mod = -mod
+	}
+	result = result + string(runes[mod])
+
+	return result
+}
